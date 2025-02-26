@@ -1,7 +1,19 @@
 let commentForm = document.getElementById("comment-form");
 let textarea = document.getElementById("comment-input");
 let newComments = document.getElementById("newComments");
-let currentDate = new Date();
+
+function formatDate() {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString("es-MX", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  return formattedDate;
+}
 
 commentForm.addEventListener("submit", () => {
   event.preventDefault();
@@ -17,17 +29,7 @@ commentForm.addEventListener("submit", () => {
   let lastPosted = document.createElement("span");
 
   // assigning the date and time to the span
-  lastPosted.textContent =
-    " Posted on " +
-    currentDate.getDate() +
-    "/" +
-    (currentDate.getMonth() + 1) +
-    "/" +
-    currentDate.getFullYear() +
-    " at " +
-    currentDate.getHours() +
-    ":" +
-    currentDate.getMinutes();
+  lastPosted.textContent = formatDate();
 
   // adding the span to list item
   newComment.appendChild(lastPosted);
