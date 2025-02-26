@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Satoshi", sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: aliceblue;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  background-color: bisque;
+  border: none;
+  border-radius: 12px;
+  color: white;
+}
