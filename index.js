@@ -1,28 +1,45 @@
-const render = document.getElementById("render");
-const emojis = ["😀", "😂", "😍", "🤔", "😎"];
-const button = document.getElementById("action");
+const form = document.getElementById("forms");
 
-function createElement() {
-  let element = document.createElement("span");
-  element.classList.add("letter");
-  return element;
+const usernames = [
+  { username: "ledead", password: "assassins350" },
+  { username: "johndoe", password: "password123" },
+  { username: "janesmith", password: "qwerty456" },
+  { username: "emirchelo", password: "wasaamf2364" },
+];
+
+function showError(errorType) {
+  let error = document.getElementById("error");
+  error.innerHTML = errorType;
+  error.classList.remove("hide");
+  setTimeout(() => {
+    error.classList.add("hide");
+  }, 5000);
 }
 
-function fillElement() {
-  for (let index = 0; index < emojis.length; index++) {
-    let element = createElement();
-    element.innerHTML = `${emojis[index]}`;
-    render.appendChild(element);
+function validation(username, password) {
+  let userFound = false;
+  for (let i = 0; i < usernames.length; i++) {
+    if (username === usernames[i].username) {
+      userFound = true;
+      if (password === usernames[i].password) {
+        window.location.href = "./dashboard.html";
+      } else {
+        showError("Incorrect password");
+      }
+    }
+  }
+
+  if (!userFound) {
+    showError("Incorrect user");
   }
 }
 
-button.addEventListener("click", () => {
-  fillElement();
-  render.classList.remove("hide");
-  button.classList.add("hide");
-  setTimeout(() => {
-    button.classList.remove("hide");
-    render.classList.add("hide");
-    render.innerHTML = "";
-  }, 5000);
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // avoid refresh action when clicking submit button
+
+  let username = document.getElementById("user").value.toLocaleLowerCase();
+  let password = document.getElementById("password").value.toLocaleLowerCase();
+  console.log(`Credentials: ${username} ${password}`);
+
+  validation(username, password);
 });
