@@ -25,6 +25,16 @@ h1 {
   text-align: center;
 }
 
+button {
+  width: 100px;
+  height: fit-content;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -42,15 +52,8 @@ form textarea {
 }
 
 form button {
-  width: 100px;
-  height: fit-content;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
   background-color: #007bff;
   color: white;
-  cursor: pointer;
 }
 
 form button:hover {
@@ -72,4 +75,15 @@ form button:hover {
   font-style: italic;
   align-self: flex-end;
   font-weight: normal;
+}
+
+#newComments button {
+  align-self: flex-end;
+  margin-top: 8px;
+  background-color: red;
+  color: white;
+}
+
+#newComments button:hover {
+  background-color: rgb(168, 5, 5);
 }

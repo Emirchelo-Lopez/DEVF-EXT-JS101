@@ -31,8 +31,16 @@ commentForm.addEventListener("submit", () => {
   // assigning the date and time to the span
   lastPosted.textContent = formatDate();
 
+  // creating delete button
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => {
+    newComment.remove(); // Remove the comment when the delete button is clicked
+  });
+
   // adding the span to list item
   newComment.appendChild(lastPosted);
+  newComment.appendChild(deleteButton);
 
   // adding the list item to the ul
   newComments.appendChild(newComment);
