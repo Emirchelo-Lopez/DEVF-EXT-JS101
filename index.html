@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript DOM</title>
+    <title>Comment Box</title>
     <link rel="stylesheet" href="./index.css" />
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap"
@@ -11,17 +11,20 @@
     />
   </head>
   <body>
-    <form action="#" id="forms">
-      <input type="text" id="user" placeholder="Insert your user name" />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Insert your password"
-      />
-      <button type="submit">Log In</button>
-      <span id="error" class="hide">Error</span>
-    </form>
+    <section id="comment-section">
+      <h1>Comment Box</h1>
+      <div class="circle"></div>
+      <form id="comment-form">
+        <textarea
+          id="comment-input"
+          rows="5"
+          placeholder="Write your comment here and post it"
+          required
+        ></textarea>
+        <button type="submit">Post</button>
+      </form>
+      <ul id="newComments"></ul>
+    </section>
     <script src="./index.js"></script>
   </body>
 </html>
