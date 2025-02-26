@@ -1,45 +1,39 @@
-const form = document.getElementById("forms");
+let commentForm = document.getElementById("comment-form");
+let textarea = document.getElementById("comment-input");
+let newComments = document.getElementById("newComments");
+let currentDate = new Date();
 
-const usernames = [
-  { username: "ledead", password: "assassins350" },
-  { username: "johndoe", password: "password123" },
-  { username: "janesmith", password: "qwerty456" },
-  { username: "emirchelo", password: "wasaamf2364" },
-];
+commentForm.addEventListener("submit", () => {
+  event.preventDefault();
+  let content = textarea.value;
 
-function showError(errorType) {
-  let error = document.getElementById("error");
-  error.innerHTML = errorType;
-  error.classList.remove("hide");
-  setTimeout(() => {
-    error.classList.add("hide");
-  }, 5000);
-}
+  // creating list item
+  let newComment = document.createElement("li");
 
-function validation(username, password) {
-  let userFound = false;
-  for (let i = 0; i < usernames.length; i++) {
-    if (username === usernames[i].username) {
-      userFound = true;
-      if (password === usernames[i].password) {
-        window.location.href = "./dashboard.html";
-      } else {
-        showError("Incorrect password");
-      }
-    }
-  }
+  // assigning content to list item
+  newComment.textContent = content;
 
-  if (!userFound) {
-    showError("Incorrect user");
-  }
-}
+  // creating span to store date and time posted
+  let lastPosted = document.createElement("span");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // avoid refresh action when clicking submit button
+  // assigning the date and time to the span
+  lastPosted.textContent =
+    " Posted on " +
+    currentDate.getDate() +
+    "/" +
+    (currentDate.getMonth() + 1) +
+    "/" +
+    currentDate.getFullYear() +
+    " at " +
+    currentDate.getHours() +
+    ":" +
+    currentDate.getMinutes();
 
-  let username = document.getElementById("user").value.toLocaleLowerCase();
-  let password = document.getElementById("password").value.toLocaleLowerCase();
-  console.log(`Credentials: ${username} ${password}`);
+  // adding the span to list item
+  newComment.appendChild(lastPosted);
 
-  validation(username, password);
+  // adding the list item to the ul
+  newComments.appendChild(newComment);
+
+  textarea.value = "";
 });
