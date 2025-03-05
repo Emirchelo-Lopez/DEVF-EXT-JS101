@@ -4,14 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Contraseñas Seguras</title>
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./pwdgtr-stylesheet.css" />
   </head>
   <body>
     <div class="container">
       <h1>Generador de Contraseñas</h1>
-      <button id="generateButton">Generar Contraseña</button>
+
+      <!-- Campo para mostrar la contraseña generada -->
       <input type="text" id="passwordOutput" readonly />
+      <button id="copyButton">📋</button>
+
+      <!-- Configuración de la contraseña -->
+      <div class="config">
+        <label for="lengthSlider"
+          >Longitud de la contraseña: <span id="lengthValue">12</span></label
+        >
+        <input type="range" id="lengthSlider" min="8" max="20" value="12" />
+
+        <label
+          ><input type="checkbox" id="uppercaseCheckbox" checked /> Incluir
+          mayúsculas</label
+        >
+        <label
+          ><input type="checkbox" id="lowercaseCheckbox" checked /> Incluir
+          minúsculas</label
+        >
+        <label
+          ><input type="checkbox" id="numbersCheckbox" checked /> Incluir
+          números</label
+        >
+        <label
+          ><input type="checkbox" id="symbolsCheckbox" /> Incluir
+          símbolos</label
+        >
+      </div>
+
+      <!-- Indicador de seguridad -->
+      <div class="strength">
+        <span>Seguridad: </span>
+        <span id="strengthText">Media</span>
+        <div class="strength-bar">
+          <div id="strengthIndicator"></div>
+        </div>
+      </div>
+
+      <!-- Botón para generar contraseña -->
+      <button id="generateButton">Generar Contraseña</button>
     </div>
+
     <script src="./pwdgtr-js.js"></script>
   </body>
 </html>
